@@ -1,6 +1,6 @@
 # coding:utf8
 # 端口扫描工具
-# 使用方式：python p.py -i 192.168.1.1 -p 22
+# 使用方式：python portScan.py -i 192.168.1.1 -p 22
 # 2017-03-23
 # leafrainy （leafrainy.cc）
 
@@ -11,11 +11,13 @@ import sys
 s = sys.argv
 ss = socket.socket(socket.AF_INET,socket.SOCK_STREAM)
 
+#提示信息
 def useNotic(s):
     print "请按照格式输入正确的参数"
     print "使用方法： python "+s[0]+" -i ip -p port"
     print "    示例： python "+s[0]+" -i 192.168.1.1 -p 22"
 
+#验证ip端口
 def inputInfo(s):
     if len(s) != 5:
     	useNotic(s)
@@ -44,7 +46,7 @@ def inputInfo(s):
     			exit(0)
 
     return inputInfoList
-
+#扫描
 def scanPort(ss,inputInfoList):
     print "扫描中。。。。"
     #tcp
